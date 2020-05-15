@@ -8,34 +8,34 @@ docker-build: memory
 	docker-compose up --build -d
 
 test:
-	docker-compose exec php-cli vendor/bin/phpunit
+	docker-compose exec app vendor/bin/phpunit
 
 assets-install:
-	docker-compose exec node yarn install
+	docker-compose exec node npm install
 
 assets-rebuild:
 	docker-compose exec node npm rebuild node-sass --force
 
 assets-dev:
-	docker-compose exec node yarn run dev
+	docker-compose exec node npm run dev
 
 assets-watch:
-	docker-compose exec node yarn run watch
+	docker-compose exec node npm run watch
 
 queue:
-	docker-compose exec php-cli php artisan queue:work
+	docker-compose exec app php artisan queue:work
 
 horizon:
-	docker-compose exec php-cli php artisan horizon
+	docker-compose exec app php artisan horizon
 
 horizon-pause:
-	docker-compose exec php-cli php artisan horizon:pause
+	docker-compose exec app php artisan horizon:pause
 
 horizon-continue:
-	docker-compose exec php-cli php artisan horizon:continue
+	docker-compose exec app php artisan horizon:continue
 
 horizon-terminate:
-	docker-compose exec php-cli php artisan horizon:terminate
+	docker-compose exec app php artisan horizon:terminate
 
 memory:
 	sudo sysctl -w vm.max_map_count=262144

@@ -50,6 +50,15 @@ services:
       - database:/var/lib/mysql/
     networks:
       - app-network
+	  
+  # Node
+  node:
+    image: node:8.6-alpine
+    container_name: node
+    volumes:
+      - ./:/var/www
+    working_dir: /var/www
+    tty: true
 
 #Docker Networks
 networks:
